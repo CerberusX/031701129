@@ -3,15 +3,16 @@
 import re
 import json
 
+
 '''省市字典集'''
 dict={
+    '北京': {'北京': {}}, '上海': {'上海': {}}, '天津': {'天津': {}}, '重庆': {'重庆': {}},
     '河北':{
         '石家庄':{},'唐山':{},'秦皇岛':{},'邯郸':{},'邢台':{},'保定':{},'张家口':{},
         '承德':{},'沧州':{},'廊坊':{},'衡水':{}
     },
-    '北京':{'北京':{}},'上海':{'上海':{}},'天津':{'天津':{}},'重庆':{'重庆':{}},
     '内蒙古':{
-        '呼和浩特':{},'包头':{},'乌海':{},'包头':{},'赤峰':{},'通辽':{},'鄂尔多斯':{},'呼伦贝尔':{},
+        '呼和浩特':{},'包头':{},'乌海':{},'赤峰':{},'通辽':{},'鄂尔多斯':{},'呼伦贝尔':{},
         '巴彦淖尔':{},'乌兰察布':{},'兴安':{},'锡林郭勒':{},'阿拉善':{}
     },
     '辽宁':{
@@ -35,8 +36,7 @@ dict={
         '盐城':{},'扬州':{},'镇江':{},'泰州':{},'宿迁':{}
     },
     '浙江':{
-        '杭州':{},'宁波':{},'温州':{},'嘉兴':{},'湖州':{},'绍兴':{},'金华':{},'衢州':{},
-        '衢州':{},'台州':{},'丽水':{}
+        '杭州':{},'宁波':{},'温州':{},'嘉兴':{},'湖州':{},'绍兴':{},'金华':{},'衢州':{},'台州':{},'丽水':{}
     },
     '安徽':{
         '合肥':{},'芜湖':{},'蚌埠':{},'淮南':{},'马鞍山':{},'淮北':{},'铜陵':{},'安庆':{},
@@ -164,7 +164,7 @@ def matchaddress(address,name,phonenum,flag):
         address3 = address2[length+loc:]
         city = city.group()
     else:
-        for d_city in dict[state]:
+        for d_city in dict.setdefault(state,None):
             if(re.search(d_city,address2)!=None):
                 break
         length = len(d_city)
@@ -228,16 +228,14 @@ def matchaddress(address,name,phonenum,flag):
                   "地址": [province, city, region, county, road, tag, address7]}
         print(json.dumps(result, ensure_ascii=False, indent=4))
 
-while 1:
-    text = input()
-    if(text=='END'):
-        break
-    flag = re.search(r'^\d', text)
-    text = re.sub('.!', '', text)
-    name = dealname(text)
-    phonenum = dealphonenumber(text)
-    address = dealaddress(text, name, phonenum)
-    matchaddress(address, name, phonenum, flag)
+
+text = input()
+flag = re.search(r'^\d', text)
+text = re.sub('.!', '', text)
+name = dealname(text)
+phonenum = dealphonenumber(text)
+address = dealaddress(text, name, phonenum)
+matchaddress(address, name, phonenum, flag)
 
 
 
