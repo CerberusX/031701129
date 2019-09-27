@@ -169,13 +169,12 @@ def matchaddress(address,name,phonenum,flag):
                 break
         length = len(d_city)
         loc = address2.find(d_city)
-        print(loc)
         if(loc<0):
             address3 = address2[loc+length-1:]
         else:
             address3 = address2[loc+length:]
         city = d_city+"市"
-    print(address3)
+        
     '''匹配三级地址'''
     region = re.search('([\u4e00-\u9fa5]{1,9}?(?:市|区|县))', address3)
     if(region!=None):
@@ -229,6 +228,7 @@ def matchaddress(address,name,phonenum,flag):
                   "地址": [province, city, region, county, road, tag, address7]}
         print(json.dumps(result, ensure_ascii=False, indent=4))
 
+
 text = input()
 flag = re.search(r'^\d', text)
 text = re.sub('.!', '', text)
@@ -236,9 +236,3 @@ name = dealname(text)
 phonenum = dealphonenumber(text)
 address = dealaddress(text, name, phonenum)
 matchaddress(address, name, phonenum, flag)
-
-
-
-
-
-
