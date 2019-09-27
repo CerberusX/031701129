@@ -157,7 +157,7 @@ def matchaddress(address,name,phonenum,flag):
             province = state
             address2 = address
     '''匹配二级地址'''
-    city = re.search(r'([\u4e00-\u9fa5]{2,7}?(?:市|自治州|盟|地区|))', address2)
+    city = re.search(r'([\u4e00-\u9fa5]{2,7}?(?:市|自治州|盟|地区))', address2)
     if(city!=None):
         length = len(city.group())
         loc = address2.find(city.group())
@@ -174,7 +174,7 @@ def matchaddress(address,name,phonenum,flag):
         else:
             address3 = address2[loc+length:]
         city = d_city+"市"
-        
+
     '''匹配三级地址'''
     region = re.search('([\u4e00-\u9fa5]{1,9}?(?:市|区|县))', address3)
     if(region!=None):
@@ -236,3 +236,9 @@ name = dealname(text)
 phonenum = dealphonenumber(text)
 address = dealaddress(text, name, phonenum)
 matchaddress(address, name, phonenum, flag)
+
+
+
+
+
+
