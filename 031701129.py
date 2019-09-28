@@ -172,7 +172,7 @@ while (1):
     phonenum = dealphonenumber(text)
     address = dealaddress(text, name, phonenum)
     result = matchaddress(address, name, phonenum, flag)
-    print(json.dumps(result))
+    print(json.dumps(result,ensure_ascii=False))
 
 
 
