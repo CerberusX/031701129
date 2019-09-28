@@ -181,7 +181,7 @@ while (1):
     try:
         result = matchaddress(address, name, phonenum, flag)
     except IndexError:
-        continue
+        print(json.dumps(result, ensure_ascii=False))
     print(json.dumps(result, ensure_ascii=False))
 
 
