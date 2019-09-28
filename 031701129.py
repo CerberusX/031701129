@@ -230,7 +230,7 @@ def matchaddress(address,name,phonenum,flag):
 
 while 1:
     text = input()
-    if(text=='END'):
+    if(text=="END"):
         break
     flag = re.search(r'^\d', text)
     text = re.sub('.!', '', text)
