@@ -178,7 +178,7 @@ while (1):
         result = matchaddress(address, name, phonenum, flag)
     except KeyError:
         continue
-     try:
+    try:
         result = matchaddress(address, name, phonenum, flag)
     except IndexError:
         continue
