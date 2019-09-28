@@ -220,12 +220,12 @@ def matchaddress(address,name,phonenum,flag):
         address7 = address6
 
     if (flag.group()=='1'):
-        result = {"姓名": name.group(), "手机": phonenum.group(),
-                  "地址": [province, city, region, county, address5]}
+        result = {'姓名': name.group(), '手机': phonenum.group(),
+                  '地址': [province, city, region, county, address5]}
         print(json.dumps(result, ensure_ascii=False, indent=4))
     else:
-        result = {"姓名": name.group(), "手机": phonenum.group(),
-                  "地址": [province, city, region, county, road, tag, address7]}
+        result = {'姓名': name.group(), '手机': phonenum.group(),
+                  '地址': [province, city, region, county, road, tag, address7]}
         print(json.dumps(result, ensure_ascii=False, indent=4))
 
 while 1:
