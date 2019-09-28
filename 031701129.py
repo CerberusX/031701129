@@ -175,9 +175,8 @@ while (1):
     phonenum = dealphonenumber(text)
     address = dealaddress(text, name, phonenum)
     try:
-        try:
-            result = matchaddress(address, name, phonenum, flag)
-    except KeyError or IndexError:
+        result = matchaddress(address, name, phonenum, flag)
+    except IndexError:
         continue
     print(json.dumps(result, ensure_ascii=False))
 
