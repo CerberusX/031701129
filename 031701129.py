@@ -88,7 +88,10 @@ def matchaddress(address,name,phonenum,flag):
         loc = address.find(state)
         address2 = address[loc+length:]
         if((state!="北京") & (state!="上海") & (state!="天津") & (state!="重庆")):
-            province = state+"省"
+            if((state=="新疆维吾尔") or (state=="广西壮族") or (state=="宁夏回族") or (state=="西藏藏族")):
+                province = state+"自治区"
+            else:
+                province = state + "省"
         else:
             province = state
             address2 = address
