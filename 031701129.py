@@ -217,7 +217,7 @@ def matchaddress(address,name,phonenum,flag):
         tag = tag.group()
     else:
         tag = ""
-        addresss7 = address6
+        address7 = address6
 
     if (flag.group()=='1'):
         result = {"姓名": name.group(), "手机": phonenum.group(),
