@@ -6,7 +6,10 @@ import json
 
 '''省市字典集'''
 dict={
-    '北京':['北京', '上海', '天津', '重庆'],
+    '北京':['北京'],
+    '上海':['上海'],
+    '天津':['天津'],
+    '重庆':['重庆'],
     '河北':['石家庄','唐山','秦皇岛','邯郸','邢台','保定','张家口','承德','沧州','廊坊','衡水',],
     '内蒙古':[
         '呼和浩特','包头','乌海','赤峰','通辽','鄂尔多斯','呼伦贝尔',
@@ -153,23 +156,23 @@ def matchaddress(address,name,phonenum,flag):
         address7 = address6
 
     if (flag.group()=='1'):
-        result = {'姓名': name.group(), '手机': phonenum.group(),'地址': [province, city, region, county, address5]}
-        print(json.dumps(result, ensure_ascii=False, indent=4))
+        result = {'姓名': name.group(), '手机': phonenum.group(),
+                  '地址': [province, city, region, county, address5]}
     else:
-        result = {'姓名': name.group(), '手机': phonenum.group(),'地址': [province, city, region, county, road, tag, address7]}
-        print(json.dumps(result, ensure_ascii=False, indent=4))
-
-if __name__ == "__main__":
-    while (1):
-        text = input()
-        if(text=="END"):
+        result = {'姓名': name.group(), '手机': phonenum.group(),
+                  '地址': [province, city, region, county, road, tag, address7]}
+    return result
+while (1):
+    text = input()
+    if(text=="END"):
             break
-        flag = re.search(r'^\d', text)
-        text = re.sub('.!', '', text)
-        name = dealname(text)
-        phonenum = dealphonenumber(text)
-        address = dealaddress(text, name, phonenum)
-        matchaddress(address, name, phonenum, flag)
+    flag = re.search(r'^\d', text)
+    text = re.sub('.!', '', text)
+    name = dealname(text)
+    phonenum = dealphonenumber(text)
+    address = dealaddress(text, name, phonenum)
+    result=matchaddress(address, name, phonenum, flag)
+    print(json.dumps(result, ensure_ascii=False, indent=4))
 
 
 
