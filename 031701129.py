@@ -178,10 +178,6 @@ while (1):
         result = matchaddress(address, name, phonenum, flag)
     except KeyError:
         continue
-    try:
-        result = matchaddress(address, name, phonenum, flag)
-    except IndexError:
-        print(json.dumps(result, ensure_ascii=False))
     print(json.dumps(result, ensure_ascii=False))
 
 
