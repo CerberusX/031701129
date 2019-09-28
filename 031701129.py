@@ -108,10 +108,10 @@ def matchaddress(address,name,phonenum,flag):
                 break
         length = len(d_city)
         loc = address2.find(d_city)
-        '''if(loc<0):
+        if(loc<0):
             address3 = address2[loc+length-1:]
-        else:'''
-        address3 = address2[loc+length:]
+        else:
+            address3 = address2[loc+length:]
         city = d_city+"市"
 
     '''匹配三级地址'''
