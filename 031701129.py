@@ -96,7 +96,7 @@ def matchaddress(address,name,phonenum,flag):
             province = state
             address2 = address
     '''匹配二级地址'''
-    city = re.search(r'([\u4e00-\u9fa5]{2,7}?(?:市|自治州|盟|地区)^(超市))', address2)
+    city = re.search(r'([\u4e00-\u9fa5]{2,7}?(?:市|自治州|盟|地区))', address2)
     if(city!=None):
         length = len(city.group())
         loc = address2.find(city.group())
