@@ -178,7 +178,7 @@ while (1):
         result = matchaddress(address, name, phonenum, flag)
     except KeyError:
         continue
-    print(json.dumps(result, ensure_ascii=False))
+    print(json.dumps(result, ensure_ascii=False，indent=4))
 
 
 
