@@ -77,7 +77,7 @@ def matchaddress(address,name,phonenum,flag):
     if(province!=None):
         length = len(province.group())
         loc = address.find(province.group())
-        address2 = address[loc+length:len(address)]
+        address2 = address[loc+length:]
         province = province.group()
         state = province.rstrip("省").rstrip("自治区")
     else:
@@ -86,7 +86,7 @@ def matchaddress(address,name,phonenum,flag):
                 break
         length = len(state)
         loc = address.find(state)
-        address2 = address[loc+length:len(address)]
+        address2 = address[loc+length:]
         if((state!="北京") & (state!="上海") & (state!="天津") & (state!="重庆")):
             if((state=="新疆维吾尔") or (state=="广西壮族") or (state=="宁夏回族") or (state=="西藏藏族")):
                 province = state+"自治区"
@@ -100,7 +100,7 @@ def matchaddress(address,name,phonenum,flag):
     if(city!=None):
         length = len(city.group())
         loc = address2.find(city.group())
-        address3 = address2[length+loc:len(address2)]
+        address3 = address2[length+loc:]
         city = city.group()
     else:
         for d_city in dict[state]:
@@ -108,10 +108,10 @@ def matchaddress(address,name,phonenum,flag):
                 break
         length = len(d_city)
         loc = address2.find(d_city)
-        if(loc<0):
-            address3 = address2[loc+length-1:len(address2)]
-        else:
-            address3 = address2[loc+length:len(address2)]
+        '''if(loc<0):
+            address3 = address2[loc+length-1:]
+        else:'''
+        address3 = address2[loc+length:]
         city = d_city+"市"
 
     '''匹配三级地址'''
@@ -119,7 +119,7 @@ def matchaddress(address,name,phonenum,flag):
     if(region!=None):
         length =len(region.group())
         loc = address3.find(region.group())
-        address4 = address3[loc+length:len(address3)]
+        address4 = address3[loc+length:]
         region = region.group()
     else:
         region = ""
@@ -130,7 +130,7 @@ def matchaddress(address,name,phonenum,flag):
     if(town!=None):
         length = len(town.group())
         loc = address4.find(town.group())
-        address5 = address4[loc+length:len(address4)]
+        address5 = address4[loc+length:]
         county = town.group()
     else:
         county = ""
@@ -141,7 +141,7 @@ def matchaddress(address,name,phonenum,flag):
     if(road!=None):
         length = len(road.group())
         loc = address5.find(road.group())
-        address6 = address5[loc+length:len(address5)]
+        address6 = address5[loc+length:]
         road = road.group()
     else:
         road = ""
@@ -152,7 +152,7 @@ def matchaddress(address,name,phonenum,flag):
     if(tag!=None):
         length = len(tag.group())
         loc = address6.find(tag.group())
-        address7 = address6[loc+length:len(address6)]
+        address7 = address6[loc+length:]
         tag = tag.group()
     else:
         tag = ""
