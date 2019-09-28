@@ -2,7 +2,6 @@
 # -*- coding: UTF-8 -*-
 import re
 import json
-import demjson
 
 
 '''省市字典集'''
@@ -154,13 +153,11 @@ def matchaddress(address,name,phonenum,flag):
         address7 = address6
 
     if (flag.group()=='1'):
-        result = {'姓名': name.group(), '手机': phonenum.group(),
-                  '地址': [province, city, region, county, address5]}
-        print(demjson.encode(result, encoding='utf-8'))
+        result = {'姓名': name.group(), '手机': phonenum.group(),'地址': [province, city, region, county, address5]}
+        print(json.dumps(result, ensure_ascii=False, indent=4))
     else:
-        result = {'姓名': name.group(), '手机': phonenum.group(),
-                  '地址': [province, city, region, county, road, tag, address7]}
-        print(demjson.encode(result, encoding='utf-8'))
+        result = {'姓名': name.group(), '手机': phonenum.group(),'地址': [province, city, region, county, road, tag, address7]}
+        print(json.dumps(result, ensure_ascii=False, indent=4))
 
 if __name__ == "__main__":
     while (1):
