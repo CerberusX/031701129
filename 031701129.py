@@ -160,17 +160,18 @@ def matchaddress(address,name,phonenum,flag):
         result = {'姓名': name.group(), '手机': phonenum.group(),
                   '地址': [province, city, region, county, road, tag, address7]}
         print(json.dumps(result, ensure_ascii=False, indent=4))
-
-while 1:
-    text = input()
-    if(text=="END"):
-        break
-    flag = re.search(r'^\d', text)
-    text = re.sub('.!', '', text)
-    name = dealname(text)
-    phonenum = dealphonenumber(text)
-    address = dealaddress(text, name, phonenum)
-    matchaddress(address, name, phonenum, flag)
+        
+if __name__=="__main__"：
+    while 1:
+        text = input()
+        if(text=="END"):
+            break
+        flag = re.search(r'^\d', text)
+        text = re.sub('.!', '', text)
+        name = dealname(text)
+        phonenum = dealphonenumber(text)
+        address = dealaddress(text, name, phonenum)
+        matchaddress(address, name, phonenum, flag)
 
 
 
