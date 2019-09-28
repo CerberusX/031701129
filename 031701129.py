@@ -170,9 +170,12 @@ while (1):
     text = re.sub('.!', '', text)
     name = dealname(text)
     phonenum = dealphonenumber(text)
-    address = dealaddress(text, name, phonenum)
-    result = matchaddress(address, name, phonenum, flag)
-    print(json.dumps(result, ensure_ascii=False))
+    try:
+        address = dealaddress(text, name, phonenum)
+        result = matchaddress(address, name, phonenum, flag)
+        print(json.dumps(result, ensure_ascii=False))
+    except IOError:
+        continue
 
 
 
