@@ -137,7 +137,7 @@ def matchaddress(address,name,phonenum,flag):
         address5 = address4
 
     '''匹配五级地址'''
-    road = re.search('[\u4e00-\u9fa5]{2,7}?路|街|巷(?:)', address5)
+    road = re.search('[\u4e00-\u9fa5]{2,7}?(?:路|街|巷)', address5)
     if(road!=None):
         length = len(road.group())
         loc = address5.find(road.group())
