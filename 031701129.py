@@ -164,7 +164,7 @@ def matchaddress(address,name,phonenum,flag):
         address3 = address2[length+loc:]
         city = city.group()
     else:
-        for d_city in dict.setdefault(state,None):
+        for d_city in dict[state]:
             if(re.search(d_city,address2)!=None):
                 break
         length = len(d_city)
