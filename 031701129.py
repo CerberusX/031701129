@@ -108,7 +108,10 @@ def matchaddress(address,name,phonenum,flag):
                 break
         length = len(d_city)
         loc = address2.find(d_city)
-        address3 = address2[loc+length:]
+        if(loc<0):
+            address3 = address2[loc+length-1:]
+        else:
+            address3 = address2[loc+length:]
         city = d_city+"市"
 
     '''匹配三级地址'''
@@ -173,9 +176,9 @@ while (1):
     address = dealaddress(text, name, phonenum)
     try:
         result = matchaddress(address, name, phonenum, flag)
+        print(json.dumps(result, ensure_ascii=False))
     except KeyError:
         continue
-    print(json.dumps(result, ensure_ascii=False))
 
 
 
